@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Francisco Jiménez</title>
+    <link>http://jjcfrancis.co/tags/rust/</link>
+    <description>Recent content in rust on Francisco Jiménez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 21 Dec 2023 06:42:03 +0000</lastBuildDate>
+    <atom:link href="http://jjcfrancis.co/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Go vs Rust in GIS</title>
+      <link>http://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
+      <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
+      <guid>http://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
+      <description>As a Geospatially minded professional, I found something missing in the so called Go vs Rust war (see reddit 😅): what about GIS?. So here I will briefly list some of my thoughts developing in a geospatial application in Go and in Rust.&#xA;Go Go is such an easy language to develop in. If you have used C or C++, you&amp;rsquo;ll be writing Go in no time. If coming from Python it might take you few extra days to understand concepts such as pointers, references or point receivers.</description>
+    </item>
+    <item>
+      <title>I started osm-wate.rs</title>
+      <link>http://jjcfrancis.co/thoughts/i-started-osm-waters/</link>
+      <pubDate>Sat, 02 Dec 2023 22:20:18 +0000</pubDate>
+      <guid>http://jjcfrancis.co/thoughts/i-started-osm-waters/</guid>
+      <description>After few late nights and lots of coffee I release the first version of osm-wate.rs. A small tool written in Rust 🦀 to get OSM water bodies that intersect with your chosen geometries. The CLI is a work in progress but it is fast&amp;hellip; I mean, really fast! It processed over 1GB of polygons in only 4 seconds!&#xA;-&amp;gt; Here&amp;rsquo;s a link to the package&#xA;Enjoy!</description>
+    </item>
+  </channel>
+</rss>

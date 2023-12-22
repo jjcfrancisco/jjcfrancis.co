@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Tile servers: Mapnik vs Martin - Francisco Jiménez</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with Martin as it is written in Rust and backed by the awesome MapLibre collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp; Martin." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Tile servers: Mapnik vs Martin" />
+<meta property="og:description" content="Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with Martin as it is written in Rust and backed by the awesome MapLibre collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp; Martin." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://jjcfrancis.co/thoughts/martin-vs-mapnik/" /><meta property="article:section" content="thoughts" />
+<meta property="article:published_time" content="2023-11-19T22:45:23+00:00" />
+<meta property="article:modified_time" content="2023-11-19T22:45:23+00:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Tile servers: Mapnik vs Martin"/>
+<meta name="twitter:description" content="Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with Martin as it is written in Rust and backed by the awesome MapLibre collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp; Martin."/>
+<script src="http://jjcfrancis.cojs/feather.min.js"></script>
+	
+	
+        <link href="http://jjcfrancis.co/css/fonts.2c2227b81b1970a03e760aa2e6121cd01f87c88586803cbb282aa224720a765f.css" rel="stylesheet">
+	
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="http://jjcfrancis.co/css/main.f14cece93c51ac347c3b0821b6cc0035b0fec5df0747ae5779d3750f4ecaa422.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="http://jjcfrancis.co/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+	
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="http://jjcfrancis.co">Francisco Jiménez</a>
+	</div>
+	<nav>
+		
+		<a href="/">home</a>
+		
+		<a href="/thoughts">thoughts</a>
+		
+		<a href="/tags">tags</a>
+		
+		<a href="/about">about</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="http://jjcfrancis.cojs/themetoggle.js"></script>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Tile servers: Mapnik vs Martin</h1>
+			<div class="meta">Posted on Nov 19, 2023</div>
+		</div>
+		
+
+		<section class="body custom-articles">
+			<p>Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with <a href="https://martin.maplibre.org/">Martin</a> as it is written in Rust and backed by the awesome <a href="https://maplibre.org/">MapLibre</a> collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp; Martin. This short post is an overview of Mapnik vs Martin.</p>
+<h1 id="specs">Specs</h1>
+<p>For me was all about performance. If Martin (Rust) could compare to Mapnik (C++) that would be a very cool comparison. Ok, a bit of the set up. This was done in Kubernetes in a cluster with a single node. Here are the specs of both deployments:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Limits</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cpu</span>:     <span style="color:#ae81ff">600m</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memory</span>:  <span style="color:#ae81ff">1Gi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Requests</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cpu</span>:      <span style="color:#ae81ff">300m</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memory</span>:   <span style="color:#ae81ff">512Mi</span>
+</span></span></code></pre></div><p>Nothing fancy. In terms of database, here are the (GCP) specs:
+<strong>Database</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">type</span>: <span style="color:#ae81ff">n2-standard-4</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">cpu</span>: <span style="color:#ae81ff">4</span>-<span style="color:#ae81ff">vCPU</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">memory</span>: <span style="color:#ae81ff">16GB</span>
+</span></span></code></pre></div><p>The PostgreSQL was 15 with PostGIS 3.3. Once again, nothing too flashy.</p>
+<h1 id="benchmarks">Benchmarks</h1>
+<p>The numbers in top row are the amount of requests for every 5 minutes i.e. 1800 requests within a 5 minute window, 2100 requests within a 5 minute window, etc. All values are normalised (percentages between 0 to 100). More tests with heavier loads were planned but the database kept giving up reaching 100% CPU after surpassing the 2200 requests so I kept it two two simple tests.</p>
+<h2 id="martin">Martin</h2>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>1800</th>
+<th>2100</th>
+<th>avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K8s CPU</td>
+<td>9</td>
+<td>12</td>
+<td>10.5</td>
+</tr>
+<tr>
+<td>K8s Mem</td>
+<td>28</td>
+<td>19</td>
+<td>23.5</td>
+</tr>
+<tr>
+<td>DB CPU</td>
+<td>57</td>
+<td>76</td>
+<td>66.5</td>
+</tr>
+</tbody>
+</table>
+<h2 id="mapnik">Mapnik</h2>
+<table>
+<thead>
+<tr>
+<th>type</th>
+<th>1800</th>
+<th>2100</th>
+<th>avg</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>K8s CPU</td>
+<td>72</td>
+<td>63</td>
+<td>68</td>
+</tr>
+<tr>
+<td>K8s Mem</td>
+<td>36</td>
+<td>27</td>
+<td>31.5</td>
+</tr>
+<tr>
+<td>DB CPU</td>
+<td>50</td>
+<td>66</td>
+<td>58</td>
+</tr>
+</tbody>
+</table>
+<h1 id="results">Results</h1>
+<p>It is hard to judge because there are only two tests but based on the numbers, Martin has done an excellent job - look at the CPU avg! It is no surprise the numbers for DB CPU between the two tile servers. Martin depends on MVT transformations at the database level whereas Mapnik only gets the data and makes the MVT transformations in-house. But I am surprised how close it is - I was expecting a clear winner in the database but Mapnik is only marginally better.</p>
+<p>To me, the most important (and exciting) part of it is that Martin can be run in a Kubernetes deployment with very small specs! For instance, under those tests, Martin would do just fine with the following:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">Limits</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cpu</span>:     <span style="color:#ae81ff">75m</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memory</span>:  <span style="color:#ae81ff">125Mi</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">Requests</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">cpu</span>:      <span style="color:#ae81ff">38m</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">memory</span>:   <span style="color:#ae81ff">64000Ki</span>
+</span></span></code></pre></div><p>Incredible! 💪🏽</p>
+<h1 id="bonus">Bonus</h1>
+<p>Other areas that aren&rsquo;t related to performance but are just as important is the features that are shipped with. Mapnik keeps it simple - solid tile server with the addition of in-house MVT transformations which <ins>is a huge plus</ins> in my opinion as I don&rsquo;t like Martin&rsquo;s absolute reliance on PostGIS. On the other hand, Martin packs a punch when it comes to the sources that it can add. Apart from PostGIS connections, Martin can also load mbtiles and pmtiles. It is needless to say how handy mbtiles are and pmtiles is a very interesting technology by <a href="https://protomaps.com/">Protomaps</a>. In addition, Martin has multiple handy utilities for mbtiles processing such as copy bulk, metadata or diffing.</p>
+<p>Great work MapLibre and everyone involved at Martin!</p>
+<p>Enjoy!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/%20/tags/mapnik">mapnik</a></li>
+					
+					<li><a href="/%20/tags/martin">martin</a></li>
+					
+					<li><a href="/%20/tags/tileserver">tileserver</a></li>
+					
+					<li><a href="/%20/tags/kubernetes">kubernetes</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jjcfrancisco" rel="me" title="GitHub" target="_blank"><i
+        data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://osmus.slack.com/team/U069TMQHGMS" rel="me" title="Slack" target="_blank"><i
+        data-feather="slack"></i></a>
+    <a class="border"></a><a class="soc" href="https://uk.linkedin.com/in/jjcfrancisco" rel="me" title="LinkedIn" target="_blank"><i
+        data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2023  built with <a
+      href="https://gohugo.io">Hugo</a> 💪🏽
+  </div>
+</footer>
+
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>
