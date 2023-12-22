@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>shortbread on Francisco Jiménez</title>
-    <link>http://jjcfrancis.co/tags/shortbread/</link>
+    <link>https://jjcfrancis.co/tags/shortbread/</link>
     <description>Recent content in shortbread on Francisco Jiménez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Wed, 06 Sep 2023 10:27:12 +0000</lastBuildDate>
-    <atom:link href="http://jjcfrancis.co/tags/shortbread/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jjcfrancis.co/tags/shortbread/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Open Sourced Tile Generators</title>
-      <link>http://jjcfrancis.co/thoughts/open-sourced-tile-generators/</link>
+      <link>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</link>
       <pubDate>Wed, 06 Sep 2023 10:27:12 +0000</pubDate>
-      <guid>http://jjcfrancis.co/thoughts/open-sourced-tile-generators/</guid>
+      <guid>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</guid>
       <description>First of all, by a &amp;rsquo;tile generator&amp;rsquo; I mean a tool that can move transform osm.pbf files to useful data - either in mbtiles, pmtiles or as database. Also, when I often hear about a tile generator, it is not only about converting osm.pbf files to mbtiles/database but also about sorting out its classification into something simpler. The prime example is OpenStreetMap. OSM is a very powerful service with so much geospatial data freely available but with the caveat that its schema is complex.</description>
     </item>
   </channel>

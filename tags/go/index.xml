@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>go on Francisco Jiménez</title>
-    <link>http://jjcfrancis.co/tags/go/</link>
+    <link>https://jjcfrancis.co/tags/go/</link>
     <description>Recent content in go on Francisco Jiménez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Thu, 21 Dec 2023 06:42:03 +0000</lastBuildDate>
-    <atom:link href="http://jjcfrancis.co/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jjcfrancis.co/tags/go/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The Go vs Rust in GIS</title>
-      <link>http://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
+      <link>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
       <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
-      <guid>http://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
+      <guid>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
       <description>As a Geospatially minded professional, I found something missing in the so called Go vs Rust war (see reddit 😅): what about GIS?. So here I will briefly list some of my thoughts developing in a geospatial application in Go and in Rust.&#xA;Go Go is such an easy language to develop in. If you have used C or C++, you&amp;rsquo;ll be writing Go in no time. If coming from Python it might take you few extra days to understand concepts such as pointers, references or point receivers.</description>
     </item>
   </channel>

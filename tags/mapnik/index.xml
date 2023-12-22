@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mapnik on Francisco Jiménez</title>
-    <link>http://jjcfrancis.co/tags/mapnik/</link>
+    <link>https://jjcfrancis.co/tags/mapnik/</link>
     <description>Recent content in mapnik on Francisco Jiménez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 19 Nov 2023 22:45:23 +0000</lastBuildDate>
-    <atom:link href="http://jjcfrancis.co/tags/mapnik/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://jjcfrancis.co/tags/mapnik/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tile servers: Mapnik vs Martin</title>
-      <link>http://jjcfrancis.co/thoughts/martin-vs-mapnik/</link>
+      <link>https://jjcfrancis.co/thoughts/martin-vs-mapnik/</link>
       <pubDate>Sun, 19 Nov 2023 22:45:23 +0000</pubDate>
-      <guid>http://jjcfrancis.co/thoughts/martin-vs-mapnik/</guid>
+      <guid>https://jjcfrancis.co/thoughts/martin-vs-mapnik/</guid>
       <description>Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with Martin as it is written in Rust and backed by the awesome MapLibre collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp;amp; Martin.</description>
     </item>
   </channel>
