@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 12 Oct 2023 06:50:17 +0000</lastBuildDate>
     <atom:link href="https://jjcfrancis.co/tags/docker/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Dockerised Postgis with Pgrouting</title>
-      <link>https://jjcfrancis.co/thoughts/dockerised-postgis-with-pgrouting/</link>
+      <title>Dockerised Postgis: granular control</title>
+      <link>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</link>
       <pubDate>Thu, 12 Oct 2023 06:50:17 +0000</pubDate>
-      <guid>https://jjcfrancis.co/thoughts/dockerised-postgis-with-pgrouting/</guid>
-      <description>Dockerised applications are so handy in production - particularly when using kubernetes. At Living Map we use spatial databases to maintain all our spatial data and we use a dockerised PostGIS. I couldn&amp;rsquo;t recommend Kartoza&amp;rsquo;s PostGIS enough as it comes with most things out of the box and the repository is actively maintained. However, sometimes you need tight control over version and for those reasons, you might want to create your own dockerised PostGIS.</description>
+      <guid>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</guid>
+      <description>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&amp;rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.&#xA;However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go.</description>
     </item>
   </channel>
 </rss>

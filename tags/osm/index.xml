@@ -20,7 +20,7 @@
       <link>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</link>
       <pubDate>Wed, 06 Sep 2023 10:27:12 +0000</pubDate>
       <guid>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</guid>
-      <description>First of all, by a &amp;rsquo;tile generator&amp;rsquo; I mean a tool that can move transform osm.pbf files to useful data - either in mbtiles, pmtiles or as database. Also, when I often hear about a tile generator, it is not only about converting osm.pbf files to mbtiles/database but also about sorting out its classification into something simpler. The prime example is OpenStreetMap. OSM is a very powerful service with so much geospatial data freely available but with the caveat that its schema is complex.</description>
+      <description>First of all, by &amp;rsquo;tile generator&amp;rsquo; I mean a tool that transforms osm.pbf files into practical formats like mbtiles, pmtiles, or a database. It should not only convert files but also simplify their classification.&#xA;OpenMapTiles OpenMapTiles (OMT), the old reliable. Battle-tested over the years, it&amp;rsquo;s a robust choice for generating your own tiles, renowned not just for data transformation but also its acclaimed schema. OMT is versatile, catering to various use cases:</description>
     </item>
   </channel>
 </rss>

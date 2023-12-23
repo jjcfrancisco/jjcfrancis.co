@@ -13,7 +13,7 @@
       <link>https://jjcfrancis.co/thoughts/martin-vs-mapnik/</link>
       <pubDate>Sun, 19 Nov 2023 22:45:23 +0000</pubDate>
       <guid>https://jjcfrancis.co/thoughts/martin-vs-mapnik/</guid>
-      <description>Mapnik is a great tile server and I have only praises for such great tool. But the lack of recent releases has made many like me scratch their heads thinking of what could be a good substitue of it. In my case, I have experimented with Martin as it is written in Rust and backed by the awesome MapLibre collective. Enough strong reasons to test it out. The tests performed were simple and uncomplicated based on get requests, there are many other in-depth articles available on the web regarding the performance of Mapnik &amp;amp; Martin.</description>
+      <description>Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs.</description>
     </item>
   </channel>
 </rss>

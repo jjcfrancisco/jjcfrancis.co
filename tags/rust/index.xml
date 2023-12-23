@@ -13,7 +13,7 @@
       <link>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
       <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
       <guid>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
-      <description>As a Geospatially minded professional, I found something missing in the so called Go vs Rust war (see reddit 😅): what about GIS?. So here I will briefly list some of my thoughts developing in a geospatial application in Go and in Rust.&#xA;Go Go is such an easy language to develop in. If you have used C or C++, you&amp;rsquo;ll be writing Go in no time. If coming from Python it might take you few extra days to understand concepts such as pointers, references or point receivers.</description>
+      <description>As a geospatially-minded professional, I couldn&amp;rsquo;t help but notice a gap in the ongoing debate between Go and Rust: what about GIS? So, let me share some brief reflections on developing geospatial applications in Go and Rust.&#xA;Go Go is very easy to pick up, especially for those versed in C or C++. Python users may take a bit longer to grasp concepts like pointers, but Go&amp;rsquo;s overall simplicity facilitates easy team adoption.</description>
     </item>
     <item>
       <title>I started osm-wate.rs</title>
