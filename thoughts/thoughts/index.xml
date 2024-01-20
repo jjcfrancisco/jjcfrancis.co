@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Thoughts on Francisco Jiménez</title>
+    <link>https://jjcfrancis.co/thoughts/</link>
+    <description>Recent content in Thoughts on Francisco Jiménez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Sat, 20 Jan 2024 11:49:37 +0000</lastBuildDate>
+    <atom:link href="https://jjcfrancis.co/thoughts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Benchmarking with OSM data: Duckdb vs Rust vs Go</title>
+      <link>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</link>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</guid>
+      <description>Lately, I&amp;rsquo;ve been curious about how duckdb, go and rust would handle OSM data and its performance. I&amp;rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!&#xA;Test 1: count features This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available here.</description>
+    </item>
+    <item>
+      <title>The Go vs Rust in GIS</title>
+      <link>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
+      <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
+      <description>As a geospatially-minded professional, I couldn&amp;rsquo;t help but notice a gap in the ongoing debate between Go and Rust: what about GIS? So, let me share some brief reflections on developing geospatial applications in Go and Rust.&#xA;Go Go is very easy to pick up, especially for those versed in C or C++. Python users may take a bit longer to grasp concepts like pointers, but Go&amp;rsquo;s overall simplicity facilitates easy team adoption.</description>
+    </item>
+    <item>
+      <title>I started osm-wate.rs</title>
+      <link>https://jjcfrancis.co/thoughts/i-started-osm-waters/</link>
+      <pubDate>Sat, 02 Dec 2023 22:20:18 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/i-started-osm-waters/</guid>
+      <description>After few late nights and lots of coffee I release the first version of osm-wate.rs. A small tool written in Rust 🦀 to get OSM water bodies that intersect with your chosen geometries. The CLI is a work in progress but it is fast&amp;hellip; I mean, really fast! It processed over 1GB of polygons in only 4 seconds!&#xA;-&amp;gt; Here&amp;rsquo;s a link to the package&#xA;Enjoy!</description>
+    </item>
+    <item>
+      <title>Tile servers: Mapnik vs Martin</title>
+      <link>https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/</link>
+      <pubDate>Sun, 19 Nov 2023 22:45:23 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/</guid>
+      <description>Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs.</description>
+    </item>
+    <item>
+      <title>Dockerised Postgis: granular control</title>
+      <link>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</link>
+      <pubDate>Thu, 12 Oct 2023 06:50:17 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</guid>
+      <description>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&amp;rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.&#xA;However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go.</description>
+    </item>
+    <item>
+      <title>Open Sourced Tile Generators</title>
+      <link>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</link>
+      <pubDate>Wed, 06 Sep 2023 10:27:12 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</guid>
+      <description>First of all, by &amp;rsquo;tile generator&amp;rsquo; I mean a tool that transforms osm.pbf files into practical formats like mbtiles, pmtiles, or a database. It should not only convert files but also simplify their classification.&#xA;OpenMapTiles OpenMapTiles (OMT), the old reliable. Battle-tested over the years, it&amp;rsquo;s a robust choice for generating your own tiles, renowned not just for data transformation but also its acclaimed schema. OMT is versatile, catering to various use cases:</description>
+    </item>
+  </channel>
+</rss>
