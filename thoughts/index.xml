@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Francisco Jiménez</title>
-    <link>https://jjcfrancis.co/</link>
-    <description>Recent content on Francisco Jiménez</description>
+    <title>Thoughts on Francisco Jiménez</title>
+    <link>https://jjcfrancis.co/thoughts/</link>
+    <description>Recent content in Thoughts on Francisco Jiménez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 21 Dec 2023 06:42:03 +0000</lastBuildDate>
-    <atom:link href="https://jjcfrancis.co/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 20 Jan 2024 11:49:37 +0000</lastBuildDate>
+    <atom:link href="https://jjcfrancis.co/thoughts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>about</title>
-      <link>https://jjcfrancis.co/about/</link>
-      <pubDate>Thu, 21 Dec 2023 16:17:18 +0000</pubDate>
-      <guid>https://jjcfrancis.co/about/</guid>
-      <description> Hi there! I am Francisco Jiménez and I am DataOps Engineer at Living Map. My passion is building geospatial solutions with a particular interest in data metrics, machine learning and data visualisation. </description>
+      <title>Benchmarking with OSM data: Duckdb vs Rust vs Go</title>
+      <link>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</link>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</guid>
+      <description>Lately, I&amp;rsquo;ve been curious about how duckdb, go and rust would handle OSM data and its performance. I&amp;rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!&#xA;Test 1: count features This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available here.</description>
     </item>
     <item>
       <title>The Go vs Rust in GIS</title>

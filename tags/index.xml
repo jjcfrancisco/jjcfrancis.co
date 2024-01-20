@@ -6,19 +6,33 @@
     <description>Recent content in Tags on Francisco Jiménez</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-gb</language>
-    <lastBuildDate>Thu, 21 Dec 2023 06:42:03 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 20 Jan 2024 11:49:37 +0000</lastBuildDate>
     <atom:link href="https://jjcfrancis.co/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>benchmarking</title>
+      <link>https://jjcfrancis.co/tags/benchmarking/</link>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
+      <guid>https://jjcfrancis.co/tags/benchmarking/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>duckdb</title>
+      <link>https://jjcfrancis.co/tags/duckdb/</link>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
+      <guid>https://jjcfrancis.co/tags/duckdb/</guid>
+      <description></description>
+    </item>
     <item>
       <title>go</title>
       <link>https://jjcfrancis.co/tags/go/</link>
-      <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
       <guid>https://jjcfrancis.co/tags/go/</guid>
       <description></description>
     </item>
     <item>
       <title>rust</title>
       <link>https://jjcfrancis.co/tags/rust/</link>
-      <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
+      <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
       <guid>https://jjcfrancis.co/tags/rust/</guid>
       <description></description>
     </item>
