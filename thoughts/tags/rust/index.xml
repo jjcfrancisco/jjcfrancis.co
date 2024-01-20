@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Francisco Jiménez</title>
+    <link>https://jjcfrancis.co/tags/rust/</link>
+    <description>Recent content in rust on Francisco Jiménez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 21 Dec 2023 06:42:03 +0000</lastBuildDate>
+    <atom:link href="https://jjcfrancis.co/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The Go vs Rust in GIS</title>
+      <link>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</link>
+      <pubDate>Thu, 21 Dec 2023 06:42:03 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/go-vs-rust-in-gis/</guid>
+      <description>As a geospatially-minded professional, I couldn&amp;rsquo;t help but notice a gap in the ongoing debate between Go and Rust: what about GIS? So, let me share some brief reflections on developing geospatial applications in Go and Rust.&#xA;Go Go is very easy to pick up, especially for those versed in C or C++. Python users may take a bit longer to grasp concepts like pointers, but Go&amp;rsquo;s overall simplicity facilitates easy team adoption.</description>
+    </item>
+    <item>
+      <title>I started osm-wate.rs</title>
+      <link>https://jjcfrancis.co/thoughts/i-started-osm-waters/</link>
+      <pubDate>Sat, 02 Dec 2023 22:20:18 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/i-started-osm-waters/</guid>
+      <description>After few late nights and lots of coffee I release the first version of osm-wate.rs. A small tool written in Rust 🦀 to get OSM water bodies that intersect with your chosen geometries. The CLI is a work in progress but it is fast&amp;hellip; I mean, really fast! It processed over 1GB of polygons in only 4 seconds!&#xA;-&amp;gt; Here&amp;rsquo;s a link to the package&#xA;Enjoy!</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tilemaker on Francisco Jiménez</title>
+    <link>https://jjcfrancis.co/tags/tilemaker/</link>
+    <description>Recent content in tilemaker on Francisco Jiménez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Wed, 06 Sep 2023 10:27:12 +0000</lastBuildDate>
+    <atom:link href="https://jjcfrancis.co/tags/tilemaker/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Open Sourced Tile Generators</title>
+      <link>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</link>
+      <pubDate>Wed, 06 Sep 2023 10:27:12 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/open-sourced-tile-generators/</guid>
+      <description>First of all, by &amp;rsquo;tile generator&amp;rsquo; I mean a tool that transforms osm.pbf files into practical formats like mbtiles, pmtiles, or a database. It should not only convert files but also simplify their classification.&#xA;OpenMapTiles OpenMapTiles (OMT), the old reliable. Battle-tested over the years, it&amp;rsquo;s a robust choice for generating your own tiles, renowned not just for data transformation but also its acclaimed schema. OMT is versatile, catering to various use cases:</description>
+    </item>
+  </channel>
+</rss>

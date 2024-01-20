@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html><head lang="en">
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Dockerised Postgis: granular control - Francisco Jiménez</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go." />
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="Dockerised Postgis: granular control" />
+<meta property="og:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/" /><meta property="article:section" content="thoughts" />
+<meta property="article:published_time" content="2023-10-12T06:50:17+00:00" />
+<meta property="article:modified_time" content="2023-10-12T06:50:17+00:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Dockerised Postgis: granular control"/>
+<meta name="twitter:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go."/>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://jjcfrancis.co/css/main.bbfc6e2264bb5ab988366f606e71e65a4e7096eadf274ba767eac57681784183.css" />
+		<link id="darkModeStyle" rel="stylesheet" type="text/css" href="https://jjcfrancis.co/css/dark.726cd11ca6eb7c4f7d48eb420354f814e5c1b94281aaf8fd0511c1319f7f78a4.css"  disabled />
+	
+
+	
+	
+		<script type="text/javascript"
+		src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+		</script>
+	
+		
+		<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({
+			tex2jax: {
+				inlineMath: [['$','$'], ['\\(','\\)']],
+				displayMath: [['$$','$$'], ['\[','\]']],
+				processEscapes: true,
+				processEnvironments: true,
+				skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+				TeX: { equationNumbers: { autoNumber: "AMS" },
+						 extensions: ["AMSmath.js", "AMSsymbols.js"] }
+			}
+		});
+		</script>
+	
+
+	
+	
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body);"></script>
+		
+		
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+					renderMathInElement(document.body, {
+							delimiters: [
+									{left: "$$", right: "$$", display: true},
+									{left: "$", right: "$", display: false}
+							]
+					});
+			});
+			</script>
+	
+	
+	
+</head>
+<body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://jjcfrancis.co/">Francisco Jiménez</a>
+	</div>
+	<nav>
+		
+		<a href="/">home</a>
+		
+		<a href="/thoughts">thoughts</a>
+		
+		<a href="/tags">tags</a>
+		
+		<a href="/about">about</a>
+		
+		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
+		<script src="https://jjcfrancis.co/js/themetoggle.js"></script>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Dockerised Postgis: granular control</h1>
+			<div class="meta">Posted on Oct 12, 2023</div>
+		</div>
+		
+
+		<section class="body custom-articles">
+			<p>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend <a href="https://github.com/kartoza/docker-postgis">Kartoza&rsquo;s PostGIS Docker image</a>. It comes with most essentials out of the box, and the repository is actively maintained.</p>
+<p>However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> postgres:15.3</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Select a version</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> POSTGIS_VERSION 3.3.3<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get update <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># General purpose libs</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get -y install <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libpq-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    build-essential <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    sqlite3 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libsqlite3-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    pkg-config <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libudunits2-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    postgresql-server-dev-15 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    software-properties-common <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    wget<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># GIS packages essential for PostGIS</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apt-get -y install <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libgeos-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libgdal-dev <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    libproj-dev <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Installs PostGIS</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> wget https://postgis.net/stuff/postgis-$POSTGIS_VERSION.tar.gz<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> tar xvzf postgis-$POSTGIS_VERSION.tar.gz<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> cd postgis-$POSTGIS_VERSION <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    ./configure --with-pgconfig<span style="color:#f92672">=</span>/usr/lib/postgresql/15/bin/pg_config <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    make <span style="color:#f92672">&amp;&amp;</span> make install<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Removes source files</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> rm -r postgis-$POSTGIS_VERSION postgis-$POSTGIS_VERSION.tar.gz<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span> <span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># If you need entrypoints, create a directory called &#39;entrypoint&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># and uncomment the COPY statement below.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># COPY ./entrypoint/ /docker-entrypoint-initdb.d/ </span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># This is something that I found helpful to add so locale does not solve invalid</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Change the LANG environment depending on your region/language.</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> LANG en_US.utf8<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Keep in mind that this Dockerfile only provides a starting point and that adjustments to PostgreSQL or PostGIS versions may result in issues when building image. Again, treat this as a base model and be sure to conduct thorough testing of the database before deploying it in a production environment.</p>
+<p>Enjoy!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			<nav class="nav tags">
+				<ul class="tags">
+					
+					<li><a href="/tags/docker">docker</a></li>
+					
+					<li><a href="/tags/postgis">postgis</a></li>
+					
+				</ul>
+			</nav>
+			
+			
+		</div>
+		</article>
+</main>
+<footer>
+  <div style="display:flex"><a class="soc" href="https://github.com/jjcfrancisco" rel="me" title="GitHub" target="_blank"><i
+        data-feather="github"></i></a>
+    <a class="border"></a><a class="soc" href="https://osmus.slack.com/team/U069TMQHGMS" rel="me" title="Slack" target="_blank"><i
+        data-feather="slack"></i></a>
+    <a class="border"></a><a class="soc" href="https://uk.linkedin.com/in/jjcfrancisco" rel="me" title="LinkedIn" target="_blank"><i
+        data-feather="linkedin"></i></a>
+    <a class="border"></a></div>
+  <div class="footer-info">
+    2024  built with <a
+      href="https://gohugo.io">Hugo</a> 💪🏽
+  </div>
+</footer>
+
+
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'G-WB6PE08HJ6', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+<script>
+  feather.replace()
+</script></div>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>postgis on Francisco Jiménez</title>
+    <link>https://jjcfrancis.co/tags/postgis/</link>
+    <description>Recent content in postgis on Francisco Jiménez</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-gb</language>
+    <lastBuildDate>Thu, 12 Oct 2023 06:50:17 +0000</lastBuildDate>
+    <atom:link href="https://jjcfrancis.co/tags/postgis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dockerised Postgis: granular control</title>
+      <link>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</link>
+      <pubDate>Thu, 12 Oct 2023 06:50:17 +0000</pubDate>
+      <guid>https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/</guid>
+      <description>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&amp;rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.&#xA;However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go.</description>
+    </item>
+  </channel>
+</rss>
