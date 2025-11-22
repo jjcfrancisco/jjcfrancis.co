@@ -3,19 +3,25 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Dockerised Postgis: granular control - Francisco Jiménez</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
-However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go." />
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:" />
 	<meta property="og:image" content=""/>
-	<meta property="og:title" content="Dockerised Postgis: granular control" />
-<meta property="og:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
-However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/" /><meta property="article:section" content="thoughts" />
-<meta property="article:published_time" content="2023-10-12T06:50:17+00:00" />
-<meta property="article:modified_time" content="2023-10-12T06:50:17+00:00" />
+	<meta property="og:url" content="https://jjcfrancis.co/thoughts/dockerised-postgis-granular-control/">
+  <meta property="og:site_name" content="Francisco Jiménez">
+  <meta property="og:title" content="Dockerised Postgis: granular control">
+  <meta property="og:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza’s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="thoughts">
+    <meta property="article:published_time" content="2023-10-12T06:50:17+00:00">
+    <meta property="article:modified_time" content="2023-10-12T06:50:17+00:00">
+    <meta property="article:tag" content="Docker">
+    <meta property="article:tag" content="Postgis">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Dockerised Postgis: granular control"/>
-<meta name="twitter:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza&rsquo;s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
-However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go."/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Dockerised Postgis: granular control">
+  <meta name="twitter:description" content="Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend Kartoza’s PostGIS Docker image. It comes with most essentials out of the box, and the repository is actively maintained.
+However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:">
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -84,6 +90,8 @@ However, in some cases, precise version control is essential. If you find yourse
 		
 		<a href="/about">about</a>
 		
+		<a href="/services">services</a>
+		
 		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
 		<script src="https://jjcfrancis.co/js/themetoggle.js"></script>
 		
@@ -101,7 +109,7 @@ However, in some cases, precise version control is essential. If you find yourse
 		<section class="body custom-articles">
 			<p>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend <a href="https://github.com/kartoza/docker-postgis">Kartoza&rsquo;s PostGIS Docker image</a>. It comes with most essentials out of the box, and the repository is actively maintained.</p>
 <p>However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> postgres:15.3</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-dockerfile" data-lang="dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span> <span style="color:#e6db74">postgres:15.3</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Select a version</span><span style="color:#960050;background-color:#1e0010">
 </span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> POSTGIS_VERSION 3.3.3<span style="color:#960050;background-color:#1e0010">
@@ -164,7 +172,7 @@ However, in some cases, precise version control is essential. If you find yourse
 			
 			
 		</div>
-		</article>
+	</article>
 </main>
 <footer>
   <div style="display:flex"><a class="soc" href="https://github.com/jjcfrancisco" rel="me" title="GitHub" target="_blank"><i
@@ -175,24 +183,10 @@ However, in some cases, precise version control is essential. If you find yourse
         data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2024  built with <a
+    2025  built with <a
       href="https://gohugo.io">Hugo</a> 💪🏽
   </div>
-</footer>
-
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-WB6PE08HJ6', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-<script>
+</footer><script>
   feather.replace()
 </script></div>
     </body>

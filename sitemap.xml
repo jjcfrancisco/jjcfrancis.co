@@ -2,6 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://jjcfrancis.co/</loc>
+    <lastmod>2025-11-21T10:11:05+00:00</lastmod>
+  </url><url>
+    <loc>https://jjcfrancis.co/thoughts/contracting/</loc>
+    <lastmod>2025-11-21T10:11:05+00:00</lastmod>
+  </url><url>
+    <loc>https://jjcfrancis.co/thoughts/</loc>
+    <lastmod>2025-11-21T10:11:05+00:00</lastmod>
+  </url><url>
+    <loc>https://jjcfrancis.co/services/</loc>
+    <lastmod>2025-11-21T06:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://jjcfrancis.co/tags/benchmarking/</loc>
     <lastmod>2024-01-20T11:49:37+00:00</lastmod>
   </url><url>
@@ -11,9 +23,6 @@
     <loc>https://jjcfrancis.co/tags/duckdb/</loc>
     <lastmod>2024-01-20T11:49:37+00:00</lastmod>
   </url><url>
-    <loc>https://jjcfrancis.co/</loc>
-    <lastmod>2024-01-20T11:49:37+00:00</lastmod>
-  </url><url>
     <loc>https://jjcfrancis.co/tags/go/</loc>
     <lastmod>2024-01-20T11:49:37+00:00</lastmod>
   </url><url>
@@ -21,9 +30,6 @@
     <lastmod>2024-01-20T11:49:37+00:00</lastmod>
   </url><url>
     <loc>https://jjcfrancis.co/tags/</loc>
-    <lastmod>2024-01-20T11:49:37+00:00</lastmod>
-  </url><url>
-    <loc>https://jjcfrancis.co/thoughts/</loc>
     <lastmod>2024-01-20T11:49:37+00:00</lastmod>
   </url><url>
     <loc>https://jjcfrancis.co/about/</loc>

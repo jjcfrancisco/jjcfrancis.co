@@ -6,13 +6,14 @@
 	<meta name="description" content="" />
 	<meta property="og:image" content=""/>
 	<link rel="alternate" type="application/rss+xml" href="https://jjcfrancis.co/index.xml" title="Francisco Jiménez" />
-	<meta property="og:title" content="Francisco Jiménez" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://jjcfrancis.co/" />
+	<meta property="og:url" content="https://jjcfrancis.co/">
+  <meta property="og:site_name" content="Francisco Jiménez">
+  <meta property="og:title" content="Francisco Jiménez">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="website">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Francisco Jiménez"/>
-<meta name="twitter:description" content=""/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Francisco Jiménez">
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -84,6 +85,8 @@
 		
 		<a href="/about">about</a>
 		
+		<a href="/services">services</a>
+		
 		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
 		<script src="https://jjcfrancis.co/js/themetoggle.js"></script>
 		
@@ -92,17 +95,31 @@
 
 
 		<main class="list">
-			<div class="site-description"><p>DataOps Engineer. Building geospatial tools at <a href="https://www.livingmap.com/">Living Map</a>.</p></div>
+			<div class="site-description"><p>Independent Platform Engineer | Working with <a href="https://overturemaps.org/">Overture Maps Foundation</a>. Building open geospatial data infrastructure.</p></div>
 			
 			
+			
+			<section class="list-item">
+				<h1 class="title"><a href="/thoughts/contracting/">Platform Engineering &amp; Data Infrastructure Services</a></h1>
+				<time>Nov 21, 2025</time>
+				<br><div class="description">
+	
+	<p>I&rsquo;m pleased to announce that I&rsquo;m now taking on client work through Francisco Jimenez Ltd.</p>
+<p>I&rsquo;m currently working with Overture Maps Foundation on their data platform and am looking for additional projects involving data pipelines, cloud infrastructure, platform engineering, or geospatial tooling.</p>
+<p>If you&rsquo;re interested in working together, please visit my <a href="/services">services page</a> for more details.</p>&hellip;
+	
+</div>
+				<a class="readmore" href="/thoughts/contracting/">Read more ⟶</a>
+			</section>
 			
 			<section class="list-item">
 				<h1 class="title"><a href="/thoughts/benchmark-duckdb-rust-go-osm/">Benchmarking with OSM data: Duckdb vs Rust vs Go</a></h1>
 				<time>Jan 20, 2024</time>
 				<br><div class="description">
 	
-	Lately, I&rsquo;ve been curious about how duckdb, go and rust would handle OSM data and its performance. I&rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!
-Test 1: count features This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available here.&hellip;
+	<p>Lately, I&rsquo;ve been curious about how <code>duckdb</code>, <code>go</code> and <code>rust</code> would handle OSM data and its performance. I&rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!</p>
+<h2 id="test-1-count-features">Test 1: count features</h2>
+<p>This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available <a href="https://github.com/jjcfrancisco/benchmarking/blob/main/benchmarking-duckdb-rust-go-osm-data.md#test-1-count-features">here</a>.</p>&hellip;
 	
 </div>
 				<a class="readmore" href="/thoughts/benchmark-duckdb-rust-go-osm/">Read more ⟶</a>
@@ -113,25 +130,64 @@ Test 1: count features This test consisted in opening the appropriate area osm.p
 				<time>Dec 21, 2023</time>
 				<br><div class="description">
 	
-	As a geospatially-minded professional, I couldn&rsquo;t help but notice a gap in the ongoing debate between Go and Rust: what about GIS? So, let me share some brief reflections on developing geospatial applications in Go and Rust.
-Go Go is very easy to pick up, especially for those versed in C or C++. Python users may take a bit longer to grasp concepts like pointers, but Go&rsquo;s overall simplicity facilitates easy team adoption.&hellip;
+	<p>As a geospatially-minded professional, I couldn&rsquo;t help but notice a gap in the ongoing debate between Go and Rust: <ins>what about GIS?</ins> So, let me share some brief reflections on developing geospatial applications in Go and Rust.</p>
+<h1 id="go">Go</h1>
+<p>Go is very easy to pick up, especially for those versed in C or C++. Python users may take a bit longer to grasp concepts like pointers, but Go&rsquo;s overall simplicity facilitates easy team adoption. In the GIS domain, the standout choice is orb by Paul Mach (<a href="https://pkg.go.dev/github.com/paulmach/orb">documentation</a>), offering comprehensive geospatial primitives and robust support for OSM operations, including tile utilities. Notably, <a href="https://protomaps.com/">Protomaps</a> uses it in their CLI tool <a href="https://github.com/protomaps/go-pmtiles">go-pmtiles</a> for mbtiles to pmtiles conversion.</p>&hellip;
 	
 </div>
 				<a class="readmore" href="/thoughts/go-vs-rust-in-gis/">Read more ⟶</a>
 			</section>
 			
+			<section class="list-item">
+				<h1 class="title"><a href="/thoughts/i-started-osm-waters/">I started osm-wate.rs</a></h1>
+				<time>Dec 2, 2023</time>
+				<br><div class="description">
+	
+	<p>After few late nights and lots of coffee I release the first version of <code>osm-wate.rs</code>. A small tool written in Rust 🦀 to get OSM water bodies that intersect with your chosen geometries. The CLI is a work in progress but it is fast&hellip; I mean, really fast! It processed over 1GB of polygons <ins>in only 4 seconds</ins>!</p>
+<p>-&gt; <a href="https://crates.io/crates/osm-waters">Here&rsquo;s a link to the package</a></p>
+<p>Enjoy!</p>&hellip;
+	
+</div>
+				<a class="readmore" href="/thoughts/i-started-osm-waters/">Read more ⟶</a>
+			</section>
 			
-
-<ul class="pagination">
-	<span class="page-item page-prev">
+			<section class="list-item">
+				<h1 class="title"><a href="/thoughts/tile-servers-martin-vs-mapnik/">Tile servers: Mapnik vs Martin</a></h1>
+				<time>Nov 19, 2023</time>
+				<br><div class="description">
 	
-	</span>
-	<span class="page-item page-next">
+	<p><a href="https://mapnik.org/">Mapnik</a> stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with <a href="https://martin.maplibre.org/">Martin</a> , written in Rust and supported by the awesome <a href="https://maplibre.org/">MapLibre</a> collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs. Martin comparison based on simple and uncomplicated GET requests.</p>&hellip;
 	
-    <a href="/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">Next →</span></a>
+</div>
+				<a class="readmore" href="/thoughts/tile-servers-martin-vs-mapnik/">Read more ⟶</a>
+			</section>
+			
+			<section class="list-item">
+				<h1 class="title"><a href="/thoughts/dockerised-postgis-granular-control/">Dockerised Postgis: granular control</a></h1>
+				<time>Oct 12, 2023</time>
+				<br><div class="description">
 	
-	</span>
-</ul>
+	<p>Dockerized applications offer tremendous advantages in production settings, especially when integrated with Kubernetes. For a comprehensive and well-maintained solution suitable for general purposes, I highly recommend <a href="https://github.com/kartoza/docker-postgis">Kartoza&rsquo;s PostGIS Docker image</a>. It comes with most essentials out of the box, and the repository is actively maintained.</p>
+<p>However, in some cases, precise version control is essential. If you find yourself in such a situation, creating your own PostGIS image might be the way to go. The following example can be used as a model to build your own custom PostGIS:</p>&hellip;
+	
+</div>
+				<a class="readmore" href="/thoughts/dockerised-postgis-granular-control/">Read more ⟶</a>
+			</section>
+			
+			<section class="list-item">
+				<h1 class="title"><a href="/thoughts/open-sourced-tile-generators/">Open Sourced Tile Generators</a></h1>
+				<time>Sep 6, 2023</time>
+				<br><div class="description">
+	
+	<p>First of all, by &rsquo;tile generator&rsquo; I mean a tool that transforms osm.pbf files into practical formats like mbtiles, pmtiles, or a database. It should not only convert files but also simplify their classification.</p>
+<h1 id="openmaptiles">OpenMapTiles</h1>
+<p>OpenMapTiles (OMT), the old reliable. Battle-tested over the years, it&rsquo;s a robust choice for generating your own tiles, renowned not just for data transformation but also its acclaimed schema. OMT is versatile, catering to various use cases:</p>&hellip;
+	
+</div>
+				<a class="readmore" href="/thoughts/open-sourced-tile-generators/">Read more ⟶</a>
+			</section>
+			
+			
 
 
 		</main>
@@ -144,24 +200,10 @@ Go Go is very easy to pick up, especially for those versed in C or C++. Python u
         data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2024  built with <a
+    2025  built with <a
       href="https://gohugo.io">Hugo</a> 💪🏽
   </div>
-</footer>
-
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-WB6PE08HJ6', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-<script>
+</footer><script>
   feather.replace()
 </script>
 	</div>

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>mapnik on Francisco Jiménez</title>
+    <title>Mapnik on Francisco Jiménez</title>
     <link>https://jjcfrancis.co/tags/mapnik/</link>
-    <description>Recent content in mapnik on Francisco Jiménez</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Mapnik on Francisco Jiménez</description>
+    <generator>Hugo</generator>
     <language>en-gb</language>
     <lastBuildDate>Sun, 19 Nov 2023 22:45:23 +0000</lastBuildDate>
     <atom:link href="https://jjcfrancis.co/tags/mapnik/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/</link>
       <pubDate>Sun, 19 Nov 2023 22:45:23 +0000</pubDate>
       <guid>https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/</guid>
-      <description>Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs.</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://mapnik.org/&#34;&gt;Mapnik&lt;/a&gt; stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with &lt;a href=&#34;https://martin.maplibre.org/&#34;&gt;Martin&lt;/a&gt; , written in Rust and supported by the awesome &lt;a href=&#34;https://maplibre.org/&#34;&gt;MapLibre&lt;/a&gt; collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs. Martin comparison based on simple and uncomplicated GET requests.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

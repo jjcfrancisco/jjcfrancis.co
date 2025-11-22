@@ -2,17 +2,25 @@
 <html><head lang="en">
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Tile servers: Mapnik vs Martin - Francisco Jiménez</title><meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs." />
+	<meta name="description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs. Martin comparison based on simple and uncomplicated GET requests." />
 	<meta property="og:image" content=""/>
-	<meta property="og:title" content="Tile servers: Mapnik vs Martin" />
-<meta property="og:description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/" /><meta property="article:section" content="thoughts" />
-<meta property="article:published_time" content="2023-11-19T22:45:23+00:00" />
-<meta property="article:modified_time" content="2023-11-19T22:45:23+00:00" />
+	<meta property="og:url" content="https://jjcfrancis.co/thoughts/tile-servers-martin-vs-mapnik/">
+  <meta property="og:site_name" content="Francisco Jiménez">
+  <meta property="og:title" content="Tile servers: Mapnik vs Martin">
+  <meta property="og:description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs. Martin comparison based on simple and uncomplicated GET requests.">
+  <meta property="og:locale" content="en_gb">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="thoughts">
+    <meta property="article:published_time" content="2023-11-19T22:45:23+00:00">
+    <meta property="article:modified_time" content="2023-11-19T22:45:23+00:00">
+    <meta property="article:tag" content="Mapnik">
+    <meta property="article:tag" content="Martin">
+    <meta property="article:tag" content="Tileserver">
+    <meta property="article:tag" content="Kubernetes">
 
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Tile servers: Mapnik vs Martin"/>
-<meta name="twitter:description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs."/>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tile servers: Mapnik vs Martin">
+  <meta name="twitter:description" content="Mapnik stands out as an excellent tile server, garnering praise for its capabilities. However, the absence of recent releases has prompted many, including myself, to seek potential substitutes. In my exploration, I experimented with Martin , written in Rust and supported by the awesome MapLibre collective — compelling reasons to give it a try. While more detailed performance analyses exist on the web for both Mapnik and Martin, this brief post provides an overview of the Mapnik vs. Martin comparison based on simple and uncomplicated GET requests.">
 <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,500&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
@@ -81,6 +89,8 @@
 		
 		<a href="/about">about</a>
 		
+		<a href="/services">services</a>
+		
 		| <span id="dark-mode-toggle" onclick="toggleTheme()"></span>
 		<script src="https://jjcfrancis.co/js/themetoggle.js"></script>
 		
@@ -115,65 +125,65 @@
 <p>In the top row, the numbers represent the request quantities for every 5 minutes, such as 1800 requests in a 5-minute window, 2100 requests in a 5-minute window, and so on. All values are normalised, ranging between 0 to 100. Although additional tests with heavier loads were intended, the database reached 100% CPU after exceeding 2200 requests, limiting the tests to two.</p>
 <h2 id="martin">Martin</h2>
 <table>
-<thead>
-<tr>
-<th>type</th>
-<th>1800</th>
-<th>2100</th>
-<th>avg</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>K8s CPU</td>
-<td>9</td>
-<td>12</td>
-<td>10.5</td>
-</tr>
-<tr>
-<td>K8s Mem</td>
-<td>28</td>
-<td>19</td>
-<td>23.5</td>
-</tr>
-<tr>
-<td>DB CPU</td>
-<td>57</td>
-<td>76</td>
-<td>66.5</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>type</th>
+          <th>1800</th>
+          <th>2100</th>
+          <th>avg</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>K8s CPU</td>
+          <td>9</td>
+          <td>12</td>
+          <td>10.5</td>
+      </tr>
+      <tr>
+          <td>K8s Mem</td>
+          <td>28</td>
+          <td>19</td>
+          <td>23.5</td>
+      </tr>
+      <tr>
+          <td>DB CPU</td>
+          <td>57</td>
+          <td>76</td>
+          <td>66.5</td>
+      </tr>
+  </tbody>
 </table>
 <h2 id="mapnik">Mapnik</h2>
 <table>
-<thead>
-<tr>
-<th>type</th>
-<th>1800</th>
-<th>2100</th>
-<th>avg</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>K8s CPU</td>
-<td>72</td>
-<td>63</td>
-<td>68</td>
-</tr>
-<tr>
-<td>K8s Mem</td>
-<td>36</td>
-<td>27</td>
-<td>31.5</td>
-</tr>
-<tr>
-<td>DB CPU</td>
-<td>50</td>
-<td>66</td>
-<td>58</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th>type</th>
+          <th>1800</th>
+          <th>2100</th>
+          <th>avg</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>K8s CPU</td>
+          <td>72</td>
+          <td>63</td>
+          <td>68</td>
+      </tr>
+      <tr>
+          <td>K8s Mem</td>
+          <td>36</td>
+          <td>27</td>
+          <td>31.5</td>
+      </tr>
+      <tr>
+          <td>DB CPU</td>
+          <td>50</td>
+          <td>66</td>
+          <td>58</td>
+      </tr>
+  </tbody>
 </table>
 <h1 id="results">Results</h1>
 <p>Judging with only two tests makes it challenging, but considering the numbers, Martin has performed remarkably well — just look at the CPU average! The difference in DB CPU between the two tile servers is expected. Martin relies on MVT transformations at the database level, while Mapnik only gets the data and handles MVT transformations in-house. Nonetheless, the proximity of results was unexpected; I anticipated Mapnik to be the clear winner at the database level, but it only marginally outperformed Martin.</p>
@@ -211,7 +221,7 @@
 			
 			
 		</div>
-		</article>
+	</article>
 </main>
 <footer>
   <div style="display:flex"><a class="soc" href="https://github.com/jjcfrancisco" rel="me" title="GitHub" target="_blank"><i
@@ -222,24 +232,10 @@
         data-feather="linkedin"></i></a>
     <a class="border"></a></div>
   <div class="footer-info">
-    2024  built with <a
+    2025  built with <a
       href="https://gohugo.io">Hugo</a> 💪🏽
   </div>
-</footer>
-
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'G-WB6PE08HJ6', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
-
-<script>
+</footer><script>
   feather.replace()
 </script></div>
     </body>

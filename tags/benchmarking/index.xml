@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>benchmarking on Francisco Jiménez</title>
+    <title>Benchmarking on Francisco Jiménez</title>
     <link>https://jjcfrancis.co/tags/benchmarking/</link>
-    <description>Recent content in benchmarking on Francisco Jiménez</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Benchmarking on Francisco Jiménez</description>
+    <generator>Hugo</generator>
     <language>en-gb</language>
     <lastBuildDate>Sat, 20 Jan 2024 11:49:37 +0000</lastBuildDate>
     <atom:link href="https://jjcfrancis.co/tags/benchmarking/index.xml" rel="self" type="application/rss+xml" />
@@ -13,7 +13,7 @@
       <link>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</link>
       <pubDate>Sat, 20 Jan 2024 11:49:37 +0000</pubDate>
       <guid>https://jjcfrancis.co/thoughts/benchmark-duckdb-rust-go-osm/</guid>
-      <description>Lately, I&amp;rsquo;ve been curious about how duckdb, go and rust would handle OSM data and its performance. I&amp;rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!&#xA;Test 1: count features This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available here.</description>
+      <description>&lt;p&gt;Lately, I&amp;rsquo;ve been curious about how &lt;code&gt;duckdb&lt;/code&gt;, &lt;code&gt;go&lt;/code&gt; and &lt;code&gt;rust&lt;/code&gt; would handle OSM data and its performance. I&amp;rsquo;m interested in using OSM data mainly because it offers everything from small to medium-sized datasets, all the way up to colossal ones like planet-scale data. So here it goes!&lt;/p&gt;&#xA;&lt;h2 id=&#34;test-1-count-features&#34;&gt;Test 1: count features&lt;/h2&gt;&#xA;&lt;p&gt;This test consisted in opening the appropriate area osm.pbf file and count the number of features. The code used to run these tests is available &lt;a href=&#34;https://github.com/jjcfrancisco/benchmarking/blob/main/benchmarking-duckdb-rust-go-osm-data.md#test-1-count-features&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
